@@ -10,7 +10,7 @@ function genericOnClick(info, tab) {
 var context = 'selection';
 var title = 'Search Blockchain.info for this ' + context + '...';
 
-var id = chrome.contextMenus.create({
+chrome.contextMenus.create({
     'title': title,
     'contexts': [context],
     'onclick': genericOnClick
@@ -20,7 +20,7 @@ var id = chrome.contextMenus.create({
 context = 'page';
 title = 'Select bitcoin address to search';
 
-var id = chrome.contextMenus.create({
+chrome.contextMenus.create({
     'title': title,
     'contexts': [context],
     'onclick': genericOnClick
