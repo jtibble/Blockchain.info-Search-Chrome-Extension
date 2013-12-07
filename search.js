@@ -4,9 +4,9 @@ function genericOnClick(info, tab) {
     
     // Bitcoin addresses are 34 characters or less, as a rule. (https://en.bitcoin.it/wiki/Address)
     if( text.length > 34 ){
-        chrome.tabs.create( {url: 'http://blockchain.info/address/' + text} );
-    } else {
         chrome.tabs.create( {url: 'http://blockchain.info/tx/' + text} );
+    } else {
+        chrome.tabs.create( {url: 'http://blockchain.info/address/' + text} );
     }
 }
 
