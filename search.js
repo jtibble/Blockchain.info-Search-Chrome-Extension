@@ -1,14 +1,18 @@
 // Context menu click callback
 function genericOnClick(info, tab) {
-    if( info.selectionText ){
-        var bitcoinAddress = info.selectionText;
-        chrome.tabs.create( {url: 'http://blockchain.info/address/' + bitcoinAddress} );
+    var text = info.selectionText;
+    
+    // Bitcoin addresses are 34 characters or less, as a rule. (https://en.bitcoin.it/wiki/Address)
+    if( text.length > 34 ){
+        chrome.tabs.create( {url: 'http://blockchain.info/address/' + text} );
+    } else {
+        chrome.tabs.create( {url: 'http://blockchain.info/tx/' + text} );
     }
 }
 
 // Create menu item for selected address
 var context = 'selection';
-var title = 'Search Blockchain.info for this ' + context + '...';
+var title = 'Search Blockchain.info for this address/transaction...';
 
 chrome.contextMenus.create({
     'title': title,
@@ -18,7 +22,7 @@ chrome.contextMenus.create({
 
 // Create menu item for right-click on a page
 context = 'page';
-title = 'Select bitcoin address to search';
+title = 'Select bitcoin address or transaction-hash to search';
 
 chrome.contextMenus.create({
     'title': title,
