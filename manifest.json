@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Blockchain.info Address Search",
     "description": "Adds right-click context menu to search Blockchain.info for a bitcoin address",
-    "version": "1.0",
+    "version": "1.1",
     "permissions": [
         "contextMenus",
         "http://*/*"
